@@ -4,6 +4,7 @@ venv/
 # Local database files
 *.db
 *.sqlite3
+data/
 
 # Log files
 *.log
