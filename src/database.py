@@ -1,18 +1,13 @@
 import mysql.connector
-import os
 
-def get_db_connection():
-    # Get the environment variables defined in the Docker Compose
-    db_host = os.getenv("DB_HOST", "localhost")
-    db_user = os.getenv("DB_USER", "user")
-    db_password = os.getenv("DB_PASSWORD", "userpassword")
-    db_name = os.getenv("DB_NAME", "ibge_data")
+class Database:
+    def __init__(self, host='db', user='root', password='password', database='test_db'):
+        self.conn = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+            database=database
+        )
 
-    # Connect to the MySQL database
-    connection = mysql.connector.connect(
-        host=db_host,
-        user=db_user,
-        password=db_password,
-        database=db_name
-    )
-    return connection
+    def close_connection(self):
+        self.conn.close()
