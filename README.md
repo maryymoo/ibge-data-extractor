@@ -13,7 +13,7 @@ This project extracts data from the 1991 IBGE Demographic Census and stores it i
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/your-username/ibge-data-extractor.git
+    git clone git@github.com:maryymoo/ibge-data-extractor.git
     cd ibge-data-extractor
     ```
 
