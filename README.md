@@ -32,6 +32,19 @@ This project extracts data from the 1991 IBGE Demographic Census and stores it i
     docker-compose run app python -m unittest discover -s tests
     ```
 
+## Database Files
+The resulting database files are stored in the `data/database` directory. This directory contains all the necessary files for the MySQL database `ibge_data`.
 
+## Accessing the Database
+To access the database, you can use the following command to enter the MySQL container:
+```sh
+docker exec -it <container_id> mysql -u root -p
+ ```
+Once inside the MySQL prompt, you can use the following commands to view the database and its tables:
+```sh
+USE ibge_data;
+SHOW TABLES;
+SELECT * FROM <table_name>;
+ ```
 
 
