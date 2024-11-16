@@ -5,10 +5,10 @@ import time
 class TestDatabase(unittest.TestCase):
     def setUp(self):
         """Set up the test environment."""
-        # Esperar o MySQL iniciar
+        # Wait for MySQL to start
         time.sleep(10)
         self.db = Database(
-            host='db',  # Use o nome do serviço definido no docker-compose.yml
+            host='db',  
             user='root',
             password='password',
             database='test_db'
