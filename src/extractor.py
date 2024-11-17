@@ -111,7 +111,6 @@ class Extractor:
         element = self.driver.find_element(By.ID, element_id)
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
         ActionChains(self.driver).move_to_element(element).click().perform()
-        time.sleep(5)
 
     def _download_zip_files(self):
         """
@@ -124,4 +123,4 @@ class Extractor:
                 print(f"Downloading: {text}")
                 self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
                 ActionChains(self.driver).move_to_element(element).click().perform()
-                time.sleep(5)  # Increase sleep time to ensure download starts
+                time.sleep(0.3)  # Increase sleep time to ensure download starts

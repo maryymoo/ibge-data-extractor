@@ -1,5 +1,4 @@
-import os
-import zipfile
+import os, zipfile
 import pandas as pd
 from typing import Dict
 
@@ -40,6 +39,15 @@ class Processor:
                 file_path = os.path.join(self.data_dir, filename)
                 print(f"Deleting: {file_path}")
                 os.remove(file_path)
+
+    def delete_extracted_files(self):
+        """
+        Deletes all files in the extracted directory.
+        """
+        for filename in os.listdir(self.extracted_dir):
+            file_path = os.path.join(self.extracted_dir, filename)
+            print(f"Deleting extracted file: {file_path}")
+            os.remove(file_path)
 
     def process_data(self) -> Dict[str, pd.DataFrame]:
         """

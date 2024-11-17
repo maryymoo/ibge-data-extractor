@@ -14,6 +14,7 @@ def main():
     processor.delete_zip_files()
     processed_data = processor.process_data()
     database.process_and_insert_data(processed_data)
+    processor.delete_extracted_files()  
     database.close_connection()
     print("Data processing and insertion completed.")
 
