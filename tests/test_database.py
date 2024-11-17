@@ -8,7 +8,7 @@ class TestDatabase(unittest.TestCase):
         # Wait for MySQL to start
         time.sleep(10)
         self.db = Database(
-            host='db',  
+            host='localhost',  
             user='root',
             password='password',
             database='test_db'
