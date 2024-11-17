@@ -17,15 +17,12 @@ This project extracts data from the 1991 IBGE Demographic Census and stores it i
     cd ibge-data-extractor
     ```
 
-2. **Build the Docker image**:
-   Open your docker first.
-    ```sh
-    docker-compose build
-    ```
+2. **Open your Docker**:
+   If you don't have it installed you can download it here: https://www.docker.com/products/docker-desktop/
 
-4. **Start the services**:
+4. **Build the Docker image and start the services**:
     ```sh
-    docker-compose up
+    docker-compose up --build
     ```
 
 5. **Run the tests** (optional):
