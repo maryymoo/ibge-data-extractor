@@ -34,7 +34,7 @@ This project automates the process of extracting, processing, and persisting dat
 4. **Run tests (optional):**
 
    ```bash
-   docker-compose run app python -m unittest discover -s tests
+   docker-compose run app python -m unittest discover -s tests -p "test_<choose file>.py"
    ```
 
    This command runs unit tests to verify that the functionality of the Extractor and Database classes works as expected.
