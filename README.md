@@ -18,16 +18,17 @@ This project extracts data from the 1991 IBGE Demographic Census and stores it i
     ```
 
 2. **Build the Docker image**:
+   Open your docker first.
     ```sh
     docker-compose build
     ```
 
-3. **Start the services**:
+4. **Start the services**:
     ```sh
     docker-compose up
     ```
 
-4. **Run the tests** (optional):
+5. **Run the tests** (optional):
     ```sh
     docker-compose run app python -m unittest discover -s tests
     ```
