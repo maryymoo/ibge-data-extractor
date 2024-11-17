@@ -1,5 +1,4 @@
-import os
-import time
+import os, time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -10,12 +9,27 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
 class Extractor:
+    """
+    A class to extract data from a specified URL using Selenium WebDriver.
+    """
+
     def __init__(self, url):
+        """
+        Initializes the Extractor with the given URL and sets up the WebDriver.
+
+        Args:
+            url (str): The URL to navigate to and extract data from.
+        """
         self.url = url
         self.driver = self._setup_driver()
 
     def _setup_driver(self):
-        # Configures and returns the WebDriver with custom download directory.
+        """
+        Configures and returns the WebDriver with custom download directory.
+
+        Returns:
+            WebDriver: Configured Selenium WebDriver instance.
+        """
         download_dir = os.path.join(os.getcwd(), 'data')
         os.makedirs(download_dir, exist_ok=True)
 
@@ -50,6 +64,9 @@ class Extractor:
         chrome_options.add_argument("--password-store=basic")
         chrome_options.add_argument("--use-mock-keychain")
 
+
+        
+        
         prefs = {
             'download.default_directory': download_dir,
             'download.prompt_for_download': False,
@@ -63,6 +80,9 @@ class Extractor:
         return driver
 
     def navigate_and_download(self):
+        """
+        Navigates to the URL and performs the download actions.
+        """
         self.driver.get(self.url)
         WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.ID, "Censos_anchor"))
@@ -80,12 +100,21 @@ class Extractor:
         self.driver.quit()
 
     def _click_element_by_id(self, element_id):
+        """
+        Clicks an element by its ID.
+
+        Args:
+            element_id (str): The ID of the element to click.
+        """
         element = self.driver.find_element(By.ID, element_id)
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
         ActionChains(self.driver).move_to_element(element).click().perform()
         time.sleep(5)
 
     def _download_zip_files(self):
+        """
+        Downloads all ZIP files found in the specified elements.
+        """
         elements = self.driver.find_elements(By.CSS_SELECTOR, "li[aria-level='5'] a.jstree-anchor")
         for element in elements:
             text = element.text

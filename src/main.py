@@ -13,10 +13,7 @@ def main():
     processor.extract_zip()
     processor.delete_zip_files()
     processed_data = processor.process_data()
-
-    # Process and insert data into the database
     database.process_and_insert_data(processed_data)
-
     database.close_connection()
     print("Data processing and insertion completed.")
 

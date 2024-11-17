@@ -4,7 +4,14 @@ import pandas as pd
 from typing import Dict
 
 class Processor:
+    """
+    A class to process data files, including extracting ZIP files and processing XLS files.
+    """
+
     def __init__(self):
+        """
+        Initializes the Processor with directories for data and extracted files.
+        """
         self.data_dir = os.path.join(os.getcwd(), 'data')
         self.extracted_dir = os.path.join(self.data_dir, 'extracted')
         os.makedirs(self.extracted_dir, exist_ok=True)
@@ -25,7 +32,9 @@ class Processor:
         return self.extracted_dir
 
     def delete_zip_files(self):
-        """Deletes all .zip files in the data directory."""
+        """
+        Deletes all .zip files in the data directory.
+        """
         for filename in os.listdir(self.data_dir):
             if filename.endswith(".zip"):
                 file_path = os.path.join(self.data_dir, filename)
